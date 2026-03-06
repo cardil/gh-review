@@ -9,11 +9,14 @@ A command-line tool for fetching and managing GitHub Pull Request review comment
 ## Features
 
 - **Fetch unresolved comments**: View all unresolved review threads for a PR with detailed statistics
+- **Review approvals**: See review decision status and who approved, requested changes, or commented
+- **PR status summary**: Check mergeability, merge state, and CI/CD check status at a glance
+- **Detailed check breakdown**: See which checks passed, failed, or are still pending
 - **Smart PR detection**: Automatically detects PR number from current branch or accepts explicit PR number
 - **Reply to threads**: Respond to review comments directly from the command line
 - **Pagination support**: Handles large PRs with many review threads
 - **Status tracking**: Shows which threads are outdated, responded to, or still need attention
-- **Direct links**: Provides clickable URLs to each comment for easy navigation
+- **Direct links**: Provides clickable URLs to each comment and check for easy navigation
 
 ## Requirements
 
@@ -68,6 +71,8 @@ gh-review help
 ## Output Format
 
 The `get` command displays:
+
+### Review Threads
 - Thread ID and file location (path:line)
 - Whether the thread is outdated
 - All comments in the thread with author information
@@ -76,6 +81,17 @@ The `get` command displays:
   - Total addressed threads (responded + outdated)
   - Threads with responses
   - Outdated threads
+
+### PR Status
+- **Reviews**: Overall review decision (APPROVED, CHANGES_REQUESTED, etc.)
+  - Individual reviewer statuses with usernames
+  - Shows who approved, requested changes, or commented
+- **Mergeability**: Whether the PR can be merged (conflicts, etc.)
+- **Merge State**: Current state (CLEAN, BLOCKED, BEHIND, etc.)
+- **CI/CD Checks**: Overall status and detailed breakdown
+  - Failed checks with links (shown first for quick attention)
+  - Pending/in-progress checks
+  - Passed checks (summarized count)
 
 ## Examples
 
