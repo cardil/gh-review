@@ -343,7 +343,7 @@ def print_threads(threads: list[dict], pr_status: dict) -> None:
         # Group checks by status
         contexts = rollup.get("contexts", {}).get("nodes", [])
         if contexts:
-            print(f"\n   Checks breakdown ({len(contexts)} total):")
+            print(f"\n📝 Checks breakdown ({len(contexts)} total):")
 
             success_checks = []
             pending_checks = []
@@ -380,7 +380,7 @@ def print_threads(threads: list[dict], pr_status: dict) -> None:
 
             # Print failed checks first (most important)
             if failed_checks:
-                print(f"   ❌ Failed ({len(failed_checks)}):")
+                print(f" ❌ Failed ({len(failed_checks)}):")
                 for name, status, url in failed_checks:
                     print(f"      • {name} ({status})")
                     if url:
@@ -388,17 +388,15 @@ def print_threads(threads: list[dict], pr_status: dict) -> None:
 
             # Then pending checks
             if pending_checks:
-                print(f"   ⏳ Pending ({len(pending_checks)}):")
+                print(f" ⏳ Pending ({len(pending_checks)}):")
                 for name, status, url in pending_checks:
                     print(f"      • {name} ({status})")
 
             # Finally successful checks (collapsed)
             if success_checks:
-                print(f"   ✅ Passed ({len(success_checks)})")
+                print(f" ✅ Passed ({len(success_checks)})")
     else:
-        print(" ❓ Checks: No status information available")
-
-    print("=" * 60)
+        print("❓ Checks: No status information available")
 
 
 def get_pr_for_comment(owner: str, repo: str, comment_id: str) -> int:
